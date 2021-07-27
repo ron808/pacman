@@ -1,0 +1,152 @@
+.path {
+  background-color: #333;
+  position: relative;
+  width: 100%;
+  height: 100px;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.path::after {
+  content: "";
+  position: absolute;
+  display: block;
+  border-top: 12px dotted white;
+  color: white;
+  width: 90%;
+  top: 50%;
+  left: 5%;
+  margin-top: -6px;
+}
+.pacman {
+  position: absolute;
+  z-index: 99;
+  /* top: 50%; */
+  left: -20%;
+  animation: forward 5s linear infinite;
+  animation-delay: 0.8s;
+}
+.pacman::after,
+.pacman::before {
+  content: "";
+  position: absolute;
+  display: block;
+  height: 0;
+  width: 0;
+  border: 30px solid yellow;
+  border-radius: 50%;
+  border-right-color: transparent;
+  border-top-color: transparent;
+  animation: chop2 0.7s ease infinite;
+}
+.pacman::after {
+  /* margin-left: 65px; */
+  border-color: yellow;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  animation: chop1 0.7s ease infinite;
+}
+@keyframes chop1 {
+  50% {
+    transform: rotate(44deg);
+  }
+}
+@keyframes chop2 {
+  50% {
+    transform: rotate(-44deg);
+  }
+}
+@keyframes forward {
+  0% {
+    left: -20%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+@keyframes colorswap {
+  50% {
+    background: hotpink;
+  }
+}
+.ghost {
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  z-index: 99;
+  height: 70px;
+  width: 60px;
+  margin-top: -35px;
+  background-color: red;
+  border-top-right-radius: 50%;
+  border-top-left-radius: 50%;
+  animation: forward 5s linear infinite, colorswap 0.5s linear infinite;
+}
+.ghost::before,
+.ghost::after {
+  content: "";
+  position: absolute;
+  height: 25px;
+  width: 20px;
+  background: white;
+  border-radius: 50%;
+  top: 15px;
+  left: 4px;
+}
+.ghost::after {
+  left: 32px;
+}
+.eyes::before,
+.eyes::after {
+  content: "";
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  background-color: blue;
+  border-radius: 50%;
+  top: 25px;
+  left: 5px;
+  z-index: 99;
+  animation: google1 0.7s linear infinite;
+}
+.eyes::after {
+  left: 33px;
+  animation: google2 0.7s linear infinite;
+}
+@keyframes google1 {
+  50% {
+    left: 10px;
+  }
+  0%,
+  100% {
+    left: 5px;
+  }
+}
+@keyframes google2 {
+  50% {
+    left: 40px;
+  }
+  0%,
+  100% {
+    left: 35px;
+  }
+}
+.skirt,
+.skirt::before,
+.skirt::after {
+  position: absolute;
+  height: 0;
+  width: 0;
+  border: 10px solid #333;
+  border-top-color: transparent;
+  bottom: -10px;
+  left: 0px;
+}
+.skirt::before {
+  content: "";
+  left: 10px;
+}
+.skirt::after {
+  content: "";
+  left: 30px;
+}
